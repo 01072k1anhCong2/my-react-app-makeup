@@ -1,10 +1,7 @@
-import { defineConfig } from 'vite'
-import react from '@vitejs/plugin-react-swc'
-import svgr from 'vite-plugin-svgr'
+import { defineConfig } from 'vite';
+import react from '@vitejs/plugin-react';
 
 export default defineConfig({
-  plugins: [
-    react(),
-    svgr()
-  ],
-})
+  base: '/my-react-app-makeup/',
+  plugins: [react()],
+});
