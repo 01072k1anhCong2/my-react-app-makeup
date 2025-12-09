@@ -1,3 +1,4 @@
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 import Home from "./pages/Home";
@@ -5,11 +6,10 @@ import About from "./pages/About";
 import Contact from "./pages/Contact";
 import Products from "./pages/Products";
 
-import { BrowserRouter, Routes, Route } from "react-router-dom";
-
 function App() {
   return (
     <BrowserRouter basename="/my-react-app-makeup">
+
       <Header />
 
       <Routes>
@@ -20,8 +20,9 @@ function App() {
       </Routes>
 
       <Footer />
+      
     </BrowserRouter>
   );
 }
 
-export default App; 
+export default App;
