@@ -28,7 +28,7 @@ export default function Home() {
 <Container
   maxWidth={false}
   sx={{
-    mt: 2,
+    mt:{ xs: 0.5, md: 1 },
     position: "relative",      
     backgroundImage: `url(${anhbia_1})`,
     backgroundSize: "cover",
@@ -100,7 +100,7 @@ export default function Home() {
           sx={{
             display: "flex",
             justifyContent: "center", 
-            my:10
+            my:{ xs: 1, md: 10 }
           }}
         >
           <ProductCard {...item} />

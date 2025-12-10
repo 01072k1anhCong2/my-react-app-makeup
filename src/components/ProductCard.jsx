@@ -22,7 +22,7 @@ function ProductCard({ name, price, img }) {
           src={img}
           alt={name}
           style={{
-            width: "250px",
+            width: { xs: "300px", md: "250px" },
             height: "400px",      
             objectFit: "cover",
             display: "block",
