@@ -4,11 +4,11 @@ const theme = createTheme({
   palette: {
     mode: "dark",
     primary: {
-      main: "#e91e63" // hồng makeup
+      main: "#000000ff" 
     },
     background: {
-      default: "#121212",
-      paper: "#1e1e1e"
+      default: "#ffffffff",
+      paper: "#000000ff"
     },
     text: {
       primary: "#f1f1f1"

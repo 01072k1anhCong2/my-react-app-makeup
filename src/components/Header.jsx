@@ -1,24 +1,107 @@
-import { AppBar, Toolbar, Typography, Button } from "@mui/material";
+import { AppBar, Toolbar, Typography, Button, Box, IconButton, Drawer, List, ListItem, ListItemText } from "@mui/material";
+import MenuIcon from "@mui/icons-material/Menu";
+import { useState } from "react";
 import { Link } from "react-router-dom";
 
-function Header() {
+export default function Header() {
+  const [mobileOpen, setMobileOpen] = useState(false);
+  const navItems = [
+    { label: "Trang chủ", path: "/" },
+    { label: "Sản phẩm", path: "/products" },
+    { label: "Giới thiệu", path: "/about" },
+    { label: "Liên hệ", path: "/contact" },
+  ];
+  const FontTitle = "'Cinzel', serif";
+  const handleDrawerToggle = () => setMobileOpen(!mobileOpen);
+
+  const drawer = (
+    <Box onClick={handleDrawerToggle} sx={{ 
+      textAlign: "center",
+    }}>
+      <Typography variant="h6" sx={{
+        my: 2 ,
+        mx:2,
+        color: "white",
+        textDecoration: "none",
+        fontFamily: "Cinzel, serif",
+        fontSize: "1rem",
+        fontWeight: "700",
+        letterSpacing: "4px", 
+        textTransform: "uppercase",
+        }}>CARTMAKEUP
+      </Typography>
+      <List>
+        {navItems.map((item) => (
+          <ListItem sx={{
+            color:"white",                
+            "&:hover": {
+                color: "black !important",              
+            },  
+          }} button key={item.label} component={Link} to={item.path}
+          >
+            <ListItemText primary={item.label} />
+          </ListItem>
+        ))}
+      </List>
+    </Box>
+  );
+
   return (
-    <AppBar position="sticky" sx={{ background: "#1e1e1e" }}>
-      <Toolbar sx={{ display: "flex", justifyContent: "space-between" }}>
-        
-        <Typography variant="h5" sx={{ fontWeight: "bold", color: "primary.main" }}>
-          Makeup Beauty
-        </Typography>
+    <>
+      <AppBar position="fixed" sx={{ 
+        backgroundColor: "transparent",
+        boxShadow: "none",
+        transition: "0.3s",
+        "&:hover": {
+        backgroundColor: "rgba(255, 255, 255, 0.9)",
+        boxShadow: "0 4px 20px rgba(0,0,0,0.1)",
+        backdropFilter: "blur(10px)",
+        color: "black ",
+        "& *": {
+        color: "black !important",
+      },
+    },
+      }}>
+        <Toolbar sx={{ display: "flex", justifyContent: "space-between" }}>
+          <Typography variant="h6" component={Link} to="/" sx={{ 
+            color: "white",
+            textDecoration: "none",
+            fontFamily: "Cinzel, serif",
+            fontSize: "1.5rem",
+            fontWeight: "700",
+            letterSpacing: "4px", 
+            textTransform: "uppercase",}}
+            >
+            CARTMAKEUP
+          </Typography>
+          <Box sx={{ display: { xs: "none", md: "flex" }, gap: 2 }}>
+            {navItems.map((item) => (
+              <Button key={item.label} component={Link} to={item.path} sx={{ color: "white" }}>
+                {item.label}
+              </Button>
+            ))}
+          </Box>
+          <IconButton color="inherit" edge="end" sx={{ display: { md: "none" } }} onClick={handleDrawerToggle}>
+            <MenuIcon />
+          </IconButton>
+        </Toolbar>
+      </AppBar>
 
-        <div>
-          <Button color="primary" component={Link} to="/">Home</Button>
-          <Button color="primary" component={Link} to="/products">Products</Button>
-          <Button color="primary" component={Link} to="/about">About</Button>
-          <Button color="primary" component={Link} to="/contact">Contact</Button>
-        </div>
-
-      </Toolbar>
-    </AppBar>
+      <Drawer
+        anchor="right"
+        open={mobileOpen}
+        onClose={handleDrawerToggle}
+        sx={{ display: { xs: "block", md: "none" } }}
+        PaperProps={{
+            sx: {
+                backgroundColor: "rgba(255, 255, 255, 0.2)",  // trong suốt nhẹ
+                backdropFilter: "blur(10px)",                 // hiệu ứng mờ
+                boxShadow: "0 4px 20px rgba(0,0,0,0.2)",                       
+    }
+  }}
+      >
+        {drawer}
+      </Drawer>
+    </>
   );
 }
-export default Header;

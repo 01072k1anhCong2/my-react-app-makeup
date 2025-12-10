@@ -4,12 +4,12 @@ import ProductCard from "../components/ProductCard";
 
 export default function Home() {
   const items = [
-    { name: "Luxury Lipstick", price: "$29", img: "https://i.imgur.com/22qH5UD.jpg" },
-    { name: "Blush Pink Rose", price: "$35", img: "https://i.imgur.com/SMe0Qyh.jpg" },
-    { name: "Diamond Highlighter", price: "$49", img: "https://i.imgur.com/8vZV7lT.jpg" },
-    { name: "Luxury Lipstick", price: "$29", img: "https://i.imgur.com/22qH5UD.jpg" },
-    { name: "Blush Pink Rose", price: "$35", img: "https://i.imgur.com/SMe0Qyh.jpg" },
-    { name: "Diamond Highlighter", price: "$49", img: "https://i.imgur.com/8vZV7lT.jpg" }
+    { name: "Luxury Lipstick", price: "$29", img: "/public/demo_1.png" },
+    { name: "Blush Pink Rose", price: "$35", img: "/public/demo_2.png" },
+    { name: "Diamond Highlighter", price: "$49", img: "/public/demo_3.png" },
+    { name: "Luxury Lipstick", price: "$29", img: "/public/demo_4.png" },
+    { name: "Blush Pink Rose", price: "$35", img: "/public/demo_5.png" },
+    { name: "Diamond Highlighter", price: "$49", img: "/public/demo_6.png" }
   ];
 
   return (
@@ -18,32 +18,91 @@ export default function Home() {
       <Hero />
 
       {/* Featured Products */}
-      <Container sx={{ mt: 6 }}>
-        <Typography variant="h4" fontWeight="bold" sx={{ mb: 3, color: "grey.100" }}>
-          Featured Products
-        </Typography>
-        <Grid container spacing={3}>
-          {items.map((item, idx) => (
-            <Grid item xs={12} sm={6} md={4} key={idx}>
-              <ProductCard {...item} />
-            </Grid>
-          ))}
-        </Grid>
-      </Container>
+<Container
+  maxWidth={false}
+  sx={{
+    mt: 2,
+    position: "relative",      
+    backgroundImage: "url('/public/anh_bia_1.png')",
+    backgroundSize: "cover",
+    backgroundPosition: "center",
+    px: { xs: 2, md: 5 }, 
+    color: "white",
+    overflow: "hidden",
+  }}
+>
+  {/* Overlay tối */}
+  <Box
+    sx={{
+      position: "absolute",
+      top: 0,
+      left: 0,
+      width: "100%",
+      height: "100%",
+      backgroundColor: "rgba(0,0,0,0.4)",
+      zIndex: 1,
+    }}
+  />
 
-      {/* New Arrivals */}
-      <Container sx={{ mt: 8 }}>
-        <Typography variant="h4" fontWeight="bold" sx={{ mb: 3, color: "grey.100" }}>
-          New Arrivals
-        </Typography>
-        <Grid container spacing={3}>
-          {items.map((item, idx) => (
-            <Grid item xs={12} sm={6} md={4} key={idx + 100}>
-              <ProductCard {...item} />
-            </Grid>
-          ))}
+  {/* Nội dung phía trên overlay */}
+  <Box sx={{ position: "relative", zIndex: 2, py: 4 }}>
+    {/* Tiêu đề chính */}
+    <Typography 
+      variant="h4" 
+      fontWeight="bold" 
+      sx={{ 
+        mb: 1, 
+        color: "grey.100",
+        textAlign: "left",
+      }}
+    >
+      Featured Products
+    </Typography>
+
+    {/* Mô tả */}
+    <Typography 
+      variant="body1" 
+      sx={{
+        mb: 6,
+        color: "grey.300",
+        textAlign: "left",
+        maxWidth: 800,
+      }}
+    >
+      Khám phá bộ sưu tập các sản phẩm trang điểm
+       cao cấp của chúng tôi, được thiết kế để tôn
+        vinh vẻ đẹp tự nhiên của bạn. Từ son môi, phấn má, 
+        đến các sản phẩm chăm sóc da, mỗi món đồ đều mang đến 
+        trải nghiệm sang trọng, tinh tế và phong cách riêng biệt.
+        Hãy để bản thân tỏa sáng với những sản phẩm phù hợp với mọi dịp.
+    </Typography>
+
+    {/* Grid sản phẩm */}
+    <Grid 
+      container 
+      spacing={3} 
+      justifyContent="center"
+    >
+      {items.map((item, idx) => (
+        <Grid 
+          item 
+          xs={12}    // mobile: 1 cột
+          sm={6}     // tablet: 2 cột
+          md={4}     // desktop: 3 cột
+          key={idx}
+          sx={{
+            display: "flex",
+            justifyContent: "center", 
+            my:10
+          }}
+        >
+          <ProductCard {...item} />
         </Grid>
-      </Container>
+      ))}
+    </Grid>
+  </Box>
+</Container>
+
 
       {/* Call to Action Section */}
       <Box
@@ -65,7 +124,7 @@ export default function Home() {
         <Button
           variant="contained"
           sx={{
-            bgcolor: "linear-gradient(45deg, #9c27b0, #e91e63)",
+            bgcolor: "linear-gradient(45deg, #b8aeb9ff, #e91e63)",
             fontWeight: "bold",
             py: 1.2,
             px: 4,
