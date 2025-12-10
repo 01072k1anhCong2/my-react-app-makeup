@@ -1,5 +1,7 @@
 import { Box, Typography } from "@mui/material";
 import { useState } from "react";
+import anhbia from "../assets/anh_bia.png";
+
 
 function Hero() {
   const [expanded, setExpanded] = useState(false);
@@ -13,7 +15,7 @@ function Hero() {
         flexDirection: "column",
         justifyContent: "center",
         alignItems: "center",
-        backgroundImage: "url('/anh_bia.png')",
+        backgroundImage: `url(${anhbia})`,
         backgroundSize: "cover",
         backgroundPosition: "center",
         color: "white",

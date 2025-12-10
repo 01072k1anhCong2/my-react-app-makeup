@@ -1,15 +1,22 @@
 import { Container, Grid, Typography, Box, Paper, Button } from "@mui/material";
 import Hero from "../components/Hero";
 import ProductCard from "../components/ProductCard";
+import anhbia_1 from "../assets/anh_bia_1.png";
+import demo_1 from "../assets/demo_1.png";
+import demo_2 from "../assets/demo_2.png";
+import demo_3 from "../assets/demo_3.png";
+import demo_4 from "../assets/demo_4.png";
+import demo_5 from "../assets/demo_5.png";
+import demo_6 from "../assets/demo_6.png";
 
 export default function Home() {
   const items = [
-    { name: "Luxury Lipstick", price: "$29", img: "/public/demo_1.png" },
-    { name: "Blush Pink Rose", price: "$35", img: "/public/demo_2.png" },
-    { name: "Diamond Highlighter", price: "$49", img: "/public/demo_3.png" },
-    { name: "Luxury Lipstick", price: "$29", img: "/public/demo_4.png" },
-    { name: "Blush Pink Rose", price: "$35", img: "/public/demo_5.png" },
-    { name: "Diamond Highlighter", price: "$49", img: "/public/demo_6.png" }
+    { name: "Luxury Lipstick", price: "$29", img: demo_1 },
+    { name: "Blush Pink Rose", price: "$35", img: demo_2 },
+    { name: "Diamond Highlighter", price: "$49", img: demo_3 },
+    { name: "Luxury Lipstick", price: "$29", img: demo_4 },
+    { name: "Blush Pink Rose", price: "$35", img: demo_5 },
+    { name: "Diamond Highlighter", price: "$49", img: demo_6 }
   ];
 
   return (
@@ -23,7 +30,7 @@ export default function Home() {
   sx={{
     mt: 2,
     position: "relative",      
-    backgroundImage: "url('/public/anh_bia_1.png')",
+    backgroundImage: `url(${anhbia_1})`,
     backgroundSize: "cover",
     backgroundPosition: "center",
     px: { xs: 2, md: 5 }, 
