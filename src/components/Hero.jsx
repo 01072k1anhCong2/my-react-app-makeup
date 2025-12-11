@@ -66,7 +66,7 @@ function Hero() {
         fontWeight="bold"
         sx={{
           mb: 2,
-          mt: { xs: expanded ? 0 : 15, md:0  },
+          mt: { xs: expanded ? -20 : 15, md:0  },
           transition: "margin-top 1.5s ease", 
           textShadow: "2px 2px 4px rgba(0,0,0,0.6)",
           fontFamily: "Cinzel, serif",

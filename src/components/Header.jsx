@@ -53,13 +53,26 @@ function Header() {
       <List>
         {navItems.map((item) => (
           <ListItem sx={{
-            color:"white",                
+            color:"white",
             "&:hover": {
                 color: "black !important",              
             },  
-          }} button key={item.label} component={Link} to={item.path}
+          }} 
+          button 
+          key={item.label} 
+          component={Link} 
+          to={item.path}
           >
-            <ListItemText primary={item.label} />
+          
+          <ListItemText 
+          primary={item.label} 
+          primaryTypographyProps={{
+          fontFamily: FontTitle,
+          fontWeight: 600,
+          color: "inherit"
+          }}
+          />
+          
           </ListItem>
         ))}
       </List>
@@ -68,7 +81,10 @@ function Header() {
 
   return (
     <>
-      <AppBar position="fixed" sx={{ 
+      <AppBar 
+      elevation={0} 
+      position="fixed" 
+      sx={{ 
         backgroundColor: scrolled ? "white" : "transparent",
         boxShadow: "none",
         transition: "0.3s",
@@ -83,23 +99,46 @@ function Header() {
         },
       }}
       >
-        <Toolbar sx={{ display: "flex", justifyContent: "space-between" }}>
-          <Typography variant="h6" component={Link} to="/" sx={{ 
+        <Toolbar 
+        sx={{ 
+          display: "flex", 
+          justifyContent: "space-between" 
+          
+          }}
+        >
+          <Typography 
+          variant="h6" 
+          component={Link} to="/" 
+          sx={{ 
             color: scrolled ? "black" : "white" ,
             textDecoration: "none",
             fontFamily: "Cinzel, serif",
-            fontSize: "1.5rem",
+            fontSize: {xs: "0.8rem", md: "2rem"},
             fontWeight: "700",
             letterSpacing: "4px", 
             textTransform: "uppercase",}}
             >
             CARTMAKEUP
           </Typography>
-          <Box sx={{ display: { xs: "none", md: "flex" }, gap: 2 }}>
+          <Box 
+            sx={{ 
+              display: { xs: "none", md: "flex" }, 
+              gap: 2 
+              }}
+          >
             {navItems.map((item) => (
-              <Button key={item.label} component={Link} to={item.path} 
+              <Button 
+              disableRipple
+              key={item.label} 
+              component={Link} 
+              to={item.path} 
               sx={{
-                 color: scrolled ? "black" : "white" 
+                color: scrolled ? "black" : "white" ,
+                backgroundColor: "transparent",
+                fontFamily: FontTitle,
+                fontWeight: "600",
+                fontSize: { xs: "0.8rem", md: "1rem" },
+                
                  }}
               >
                 {item.label}
