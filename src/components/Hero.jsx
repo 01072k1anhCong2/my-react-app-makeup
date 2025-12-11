@@ -1,10 +1,32 @@
 import { Box, Typography } from "@mui/material";
-import { useState } from "react";
+import { useState,useEffect } from "react";
 import anhbia from "../assets/anh_bia.png";
 
 function Hero() {
-  const [expanded, setExpanded] = useState(false);
+  const [expanded, setExpanded] = useState(true);
+  const [loaded, setLoaded] = useState(false);
 
+  useEffect(() => {
+    const timer = setTimeout(() => setLoaded(true), 100); 
+    return () => clearTimeout(timer);
+  }, []);
+
+  // Tự thu nhỏ khi scroll
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY > 50) { // scroll xuống hơn 50px → thu nhỏ
+        setExpanded(false);
+      } else {
+        setExpanded(true); // scroll lên trên → mở lại
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
   return (
     <Box
       sx={{
@@ -14,22 +36,38 @@ function Hero() {
         flexDirection: "column",
         justifyContent: "center",
         alignItems: "center",
-        backgroundImage: `url(${anhbia})`,
         backgroundSize: "cover",
         backgroundPosition: "center",
         color: "white",
         textAlign: "center",
         px: { xs: 2, sm: 4 }, 
-        pt: { xs: 4, sm: 6 },      // padding responsive
+        pt: { xs: 4, sm: 6 }, 
         position: "relative",
-      }}
-    >
+        }}
+     >
+         <Box
+          sx={{
+          position: "absolute",
+          top: 0,
+          left: 0,
+          width: "100%",
+          height: "100%",
+          backgroundImage: `url(${anhbia})`,
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+          filter: loaded ? "brightness(70%)" : "brightness(100%)",
+          transition: "filter 1s ease",
+          zIndex: -1
+          }}
+        />
       {/* Tiêu đề */}
       <Typography
         variant="h3"
         fontWeight="bold"
         sx={{
           mb: 2,
+          mt: { xs: expanded ? 0 : 15, md:0  },
+          transition: "margin-top 1.5s ease", 
           textShadow: "2px 2px 4px rgba(0,0,0,0.6)",
           fontFamily: "Cinzel, serif",
           letterSpacing: { xs: "2px", md: "4px" },  // responsive letter spacing
@@ -73,8 +111,8 @@ function Hero() {
           textShadow: "1px 1px 2px rgba(0,0,0,0.7)",
           textAlign: "center",
           fontSize: { xs: "0.85rem", sm: "1rem", md: "1.05rem" },
-          opacity: expanded ? 1 : 0,
-          transform: expanded ? "translateY(0)" : "translateY(-20px)",
+          opacity: loaded && expanded ? 1 : 0,
+          transform: loaded && expanded ? "translateY(0)" : "translateY(-20px)",
           transition: "opacity 1s ease, transform 1s ease",
         }}
       >
@@ -89,13 +127,17 @@ function Hero() {
       <Typography
         onClick={() => setExpanded(!expanded)}
         sx={{
-          mt:{ xs: 1, md: 5 },
+          mt:{ xs: expanded ? 0 : -10, md: 5 },
           cursor: "pointer",
           fontWeight: "bold",
           transition: "transform 0.5s ease",
           transform: expanded ? "translateY(0)" : "translateY(-10px)",
           position: "relative",
           fontSize: { xs: "0.9rem", sm: "1rem", md: "1.1rem" },
+          opacity: loaded ? 1 : 0,
+          transform: loaded && expanded ? "translateY(0)" : "translateY(30px)",
+          transition: "opacity 1.5s ease, transform 2s ease",
+
           "&::after": {
             content: '""',
             position: "absolute",
@@ -106,6 +148,7 @@ function Hero() {
             bgcolor: "currentColor",
             transformOrigin: "center",
             animation: "shake 1.5s infinite",
+            
           },
           "&:hover": {
             opacity: 0.7,

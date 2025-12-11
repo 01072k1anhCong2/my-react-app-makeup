@@ -1,10 +1,28 @@
 import { AppBar, Toolbar, Typography, Button, Box, IconButton, Drawer, List, ListItem, ListItemText } from "@mui/material";
 import MenuIcon from "@mui/icons-material/Menu";
-import { useState } from "react";
+import { useState,useEffect } from "react";
 import { Link } from "react-router-dom";
 
-export default function Header() {
+function Header() {
+
   const [mobileOpen, setMobileOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY > 50) {
+        setScrolled(true); // scroll xuống → background trắng
+      } else {
+        setScrolled(false); // scroll lên → background trong suốt
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
   const navItems = [
     { label: "Trang chủ", path: "/" },
     { label: "Sản phẩm", path: "/products" },
@@ -15,8 +33,10 @@ export default function Header() {
   const handleDrawerToggle = () => setMobileOpen(!mobileOpen);
 
   const drawer = (
-    <Box onClick={handleDrawerToggle} sx={{ 
+    <Box onClick={handleDrawerToggle} 
+    sx={{ 
       textAlign: "center",
+      
     }}>
       <Typography variant="h6" sx={{
         my: 2 ,
@@ -49,7 +69,7 @@ export default function Header() {
   return (
     <>
       <AppBar position="fixed" sx={{ 
-        backgroundColor: "transparent",
+        backgroundColor: scrolled ? "white" : "transparent",
         boxShadow: "none",
         transition: "0.3s",
         "&:hover": {
@@ -58,13 +78,14 @@ export default function Header() {
         backdropFilter: "blur(10px)",
         color: "black ",
         "& *": {
-        color: "black !important",
-      },
-    },
-      }}>
+            color: "black !important",
+          },
+        },
+      }}
+      >
         <Toolbar sx={{ display: "flex", justifyContent: "space-between" }}>
           <Typography variant="h6" component={Link} to="/" sx={{ 
-            color: "white",
+            color: scrolled ? "black" : "white" ,
             textDecoration: "none",
             fontFamily: "Cinzel, serif",
             fontSize: "1.5rem",
@@ -76,12 +97,21 @@ export default function Header() {
           </Typography>
           <Box sx={{ display: { xs: "none", md: "flex" }, gap: 2 }}>
             {navItems.map((item) => (
-              <Button key={item.label} component={Link} to={item.path} sx={{ color: "white" }}>
+              <Button key={item.label} component={Link} to={item.path} 
+              sx={{
+                 color: scrolled ? "black" : "white" 
+                 }}
+              >
                 {item.label}
               </Button>
             ))}
           </Box>
-          <IconButton color="inherit" edge="end" sx={{ display: { md: "none" } }} onClick={handleDrawerToggle}>
+          <IconButton color="inherit" edge="end"
+           sx={{ 
+            display: { md: "none" },
+            color: scrolled ? "black" : "white"}} 
+            onClick={handleDrawerToggle}
+          >
             <MenuIcon />
           </IconButton>
         </Toolbar>
@@ -91,12 +121,13 @@ export default function Header() {
         anchor="right"
         open={mobileOpen}
         onClose={handleDrawerToggle}
-        sx={{ display: { xs: "block", md: "none" } }}
+        sx={{ display: { xs: "block", md: "none" }, }}
         PaperProps={{
             sx: {
                 backgroundColor: "rgba(255, 255, 255, 0.2)",  // trong suốt nhẹ
                 backdropFilter: "blur(10px)",                 // hiệu ứng mờ
-                boxShadow: "0 4px 20px rgba(0,0,0,0.2)",                       
+                boxShadow: "0 4px 20px rgba(0,0,0,0.2)", 
+                                      
     }
   }}
       >
@@ -105,3 +136,5 @@ export default function Header() {
     </>
   );
 }
+
+export default Header;
