@@ -70,9 +70,9 @@ function Hero() {
           transition: "margin-top 1.5s ease", 
           textShadow: "2px 2px 4px rgba(0,0,0,0.6)",
           fontFamily: "Cinzel, serif",
-          letterSpacing: { xs: "2px", md: "4px" },  // responsive letter spacing
+          letterSpacing: { xs: "2px", md: "4px" }, 
           textTransform: "uppercase",
-          fontSize: { xs: "1.5rem", sm: "2rem", md: "2.5rem" }, // responsive fontSize
+          fontSize: { xs: "1.5rem", sm: "2rem", md: "2.5rem" }, 
           opacity: 0,
           animation: "slideInLeft 1.2s ease forwards",
           "@keyframes slideInLeft": {

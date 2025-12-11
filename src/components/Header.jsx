@@ -57,6 +57,19 @@ function Header() {
             "&:hover": {
                 color: "black !important",              
             },  
+            "&::after": {
+                content: '""',
+                position: "absolute",
+                left: 0,
+                bottom: -2,
+                width: "0%",
+                height: "2px",
+                backgroundColor: "currentColor",
+                transition: "width 0.3s ease",
+              },
+             "&:hover::after": {
+                width: "100%",
+             },
           }} 
           button 
           key={item.label} 
@@ -89,7 +102,6 @@ function Header() {
         boxShadow: "none",
         transition: "0.3s",
         "&:hover": {
-        backgroundColor: "rgba(255, 255, 255, 0.9)",
         boxShadow: "0 4px 20px rgba(0,0,0,0.1)",
         backdropFilter: "blur(10px)",
         color: "black ",
@@ -128,17 +140,34 @@ function Header() {
           >
             {navItems.map((item) => (
               <Button 
-              disableRipple
-              key={item.label} 
-              component={Link} 
-              to={item.path} 
-              sx={{
-                color: scrolled ? "black" : "white" ,
-                backgroundColor: "transparent",
-                fontFamily: FontTitle,
-                fontWeight: "600",
-                fontSize: { xs: "0.8rem", md: "1rem" },
-                
+                disableRipple
+                key={item.label}
+                component={Link}
+                to={item.path}
+                sx={{
+                  position: "relative",       
+                  display: "inline-block",    
+                  padding: 0,             
+                  color: scrolled ? "black" : "white",
+                  backgroundColor: "transparent",
+                  fontFamily: FontTitle,
+                  fontWeight: "600",
+                  minWidth: "unset",         
+                  fontSize: { xs: "0.8rem", md: "1rem" },
+
+                  "&::after": {
+                    content: '""',
+                    position: "absolute",
+                    left: 0,
+                    bottom: -2,             
+                    width: "0%",
+                    height: "2px",
+                    backgroundColor: "currentColor",
+                    transition: "width 0.3s ease",
+                  },
+                  "&:hover::after": {
+                    width: "100%",
+                  },
                  }}
               >
                 {item.label}
