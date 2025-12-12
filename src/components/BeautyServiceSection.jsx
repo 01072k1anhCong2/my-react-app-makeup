@@ -1,10 +1,10 @@
 import { Box, Typography, Grid } from "@mui/material";
 
-export default function BeautyServiceSection({ title, services }) {
+ function BeautyServiceSection({ title, services }) {
   return (
     <Box
       sx={{
-        py: 6,
+        py: {xs:15,md:20},
         px: 2,
         backgroundColor: "black", // NỀN ĐEN
       }}
@@ -92,9 +92,6 @@ export default function BeautyServiceSection({ title, services }) {
                 <Typography variant="h6" sx={{ fontWeight: "700", mb: 1 }}>
                   {item.name}
                 </Typography>
-                <Typography variant="body1" sx={{ fontSize: "1rem" }}>
-                  {item.price}
-                </Typography>
               </Box>
             </Box>
           </Grid>
@@ -103,3 +100,5 @@ export default function BeautyServiceSection({ title, services }) {
     </Box>
   );
 }
+
+export default BeautyServiceSection;

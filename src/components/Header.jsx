@@ -4,7 +4,7 @@ import { useState,useEffect } from "react";
 import { Link } from "react-router-dom";
 import LanguageSwitcher from "./LanguageSwitcher";
 import {useLanguage} from "../context/LanguageContext";
-import { BorderLeft } from "@mui/icons-material";
+
 
 export const FontTitle = "'Cinzel', serif";
 
@@ -91,7 +91,8 @@ function Header() {
       }} 
       menuSx={{
         color:"white",
-        backgroundColor: "rgba(73, 73, 73, 0.2)",  
+        backgroundColor: "rgba(73, 73, 73, 0.2)",
+          
       }}
       />
     </Box>
