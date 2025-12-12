@@ -3,9 +3,15 @@ import { useState } from "react";
 import { FontTitle } from "./Header";
 import {useLanguage} from "../context/LanguageContext";
 import GTranslateIcon from '@mui/icons-material/GTranslate';
+import { useTheme, useMediaQuery} from "@mui/material";
 
 
- function LanguageSwitcher({ scrolled,sx }) {
+
+ function LanguageSwitcher({ scrolled,sx,menuSx }) {
+  // chinh khi man hinh sm se bo bot chu 
+  const theme = useTheme();
+  const isMobile = useMediaQuery(theme.breakpoints.down("sm")); 
+
   const { t, setLang } = useLanguage();
   const [anchor, setAnchor] = useState(null);
   return (
@@ -56,7 +62,7 @@ import GTranslateIcon from '@mui/icons-material/GTranslate';
           }} />
         {t("Language")}
       </Button>
-
+      {/* menu doi ngon ngu */}
       <Menu
         anchorEl={anchor}
         open={Boolean(anchor)}
@@ -69,13 +75,17 @@ import GTranslateIcon from '@mui/icons-material/GTranslate';
                   backdropFilter: "blur(4px)",          
                   boxShadow: "0 4px 20px rgba(0,0,0,0.2)", 
                   color: "black",
+                  display: "flex",
+                  alignItems: "center",
+                  flexDirection: "column",
+                  ...menuSx,
     },
   }}
 
       >
-        <MenuItem onClick={() => setLang("vi")}>🇻🇳 Tiếng Việt</MenuItem>
-        <MenuItem onClick={() => setLang("ja")}>🇯🇵 日本語</MenuItem>
-        <MenuItem onClick={() => setLang("en")}>🇺🇸 English</MenuItem>
+        <MenuItem onClick={() => setLang("vi")}> {!isMobile && "🇻🇳"} Tiếng Việt</MenuItem>
+        <MenuItem onClick={() => setLang("ja")}> {!isMobile && "🇯🇵"} 日本語</MenuItem>
+        <MenuItem onClick={() => setLang("en")}> {!isMobile && "🇺🇸"} English</MenuItem>
       </Menu>
     </>
   );
