@@ -1,12 +1,13 @@
 import { Box, Typography,Grid } from "@mui/material";
 import LanguageSwitcher from "./LanguageSwitcher";
 import {useLanguage} from "../context/LanguageContext";
-
+import Reveal from "../components/Reveal";
 function BeautyInfoSection() {
 
   const {t} = useLanguage();
 
   return (
+  
   <Box
       sx={{
         maxWidth:{xs:"90%",md:"70%"},
@@ -17,6 +18,7 @@ function BeautyInfoSection() {
       }}
     >
       {/* Title */}
+      <Reveal>
       <Typography
         variant="h3"
         sx={{
@@ -32,10 +34,12 @@ function BeautyInfoSection() {
       >
         {t("aisatsu")}
       </Typography>
+      </Reveal>
 
       {/* Sub sections */}
+
 <Grid container spacing={2} sx={{ color:"black", }}>
-  
+  <Reveal>
   <Grid 
     item xs={12} 
     sm={6} 
@@ -54,7 +58,9 @@ function BeautyInfoSection() {
       {t("ContentItem_1")}
     </Typography>
   </Grid>
+  </Reveal>
 
+  <Reveal>
   <Grid 
     item xs={12} 
     sm={6} 
@@ -73,8 +79,9 @@ function BeautyInfoSection() {
       {t("ContentItem_2")}
     </Typography>
   </Grid>
+  </Reveal>
 
-
+  <Reveal>
   <Grid 
     item xs={12} 
     sm={6} 
@@ -93,13 +100,13 @@ function BeautyInfoSection() {
       {t("ContentItem_3")}
     </Typography>
   </Grid>
+  </Reveal>
 
 
 </Grid>
 
-
     
-    </Box>
+  </Box>
   );
 }
 export default BeautyInfoSection;

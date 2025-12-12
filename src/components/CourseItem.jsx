@@ -1,4 +1,5 @@
 import { Box, Typography, Grid } from "@mui/material";
+import Reveal from "../components/Reveal";
 
 function CourseItem({ title, services }) {
   return (
@@ -10,6 +11,7 @@ function CourseItem({ title, services }) {
       }}
     >
       {/* Title */}
+      <Reveal>
       <Typography
         variant="h4"
         sx={{
@@ -21,8 +23,9 @@ function CourseItem({ title, services }) {
       >
         {title}
       </Typography>
-
+      </Reveal>
       {/* Image Grid */}
+      <Reveal>
       <Grid 
       container 
       spacing={3}
@@ -97,6 +100,7 @@ function CourseItem({ title, services }) {
           </Grid>
         ))}
       </Grid>
+      </Reveal>
     </Box>
   );
 }

@@ -3,6 +3,7 @@ import { useState,useEffect } from "react";
 import anhbia from "../assets/anh_bia.png";
 import {useLanguage} from "../context/LanguageContext";
 
+
 function Hero() {
   const {t} = useLanguage();
   const [expanded, setExpanded] = useState(true);

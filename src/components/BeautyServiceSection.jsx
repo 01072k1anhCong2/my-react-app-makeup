@@ -1,4 +1,5 @@
 import { Box, Typography, Grid } from "@mui/material";
+import Reveal from "../components/Reveal";
 
  function BeautyServiceSection({ title, services }) {
   return (
@@ -10,6 +11,7 @@ import { Box, Typography, Grid } from "@mui/material";
       }}
     >
       {/* Title */}
+      <Reveal>
       <Typography
         variant="h4"
         sx={{
@@ -21,7 +23,7 @@ import { Box, Typography, Grid } from "@mui/material";
       >
         {title}
       </Typography>
-
+      </Reveal>
       {/* Image Grid */}
       <Grid 
       container 
@@ -31,6 +33,8 @@ import { Box, Typography, Grid } from "@mui/material";
       >
         {services.map((item, index) => (
           <Grid item xs={12} sm={6} md={4} key={index}>
+            
+            <Reveal>
             <Box
               sx={{
                 position: "relative",
@@ -38,13 +42,13 @@ import { Box, Typography, Grid } from "@mui/material";
 
                 /* Vuông và responsive */
                 height: {
-                  xs: "220px",   // Mobile: nhỏ
+                  xs: "220px",  
                   sm: "260px",
-                  md: "350px",   // PC: to hơn
+                  md: "350px",   
                 },
 
                 overflow: "hidden",
-                borderRadius: "0px", // BO GÓC VUÔNG
+                borderRadius: "0px", 
                 boxShadow: "0 4px 12px rgba(255,255,255,0.1)",
 
                 "&:hover .overlay": {
@@ -94,6 +98,8 @@ import { Box, Typography, Grid } from "@mui/material";
                 </Typography>
               </Box>
             </Box>
+            </Reveal>
+
           </Grid>
         ))}
       </Grid>
