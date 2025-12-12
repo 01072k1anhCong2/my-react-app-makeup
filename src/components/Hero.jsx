@@ -1,8 +1,10 @@
 import { Box, Typography } from "@mui/material";
 import { useState,useEffect } from "react";
 import anhbia from "../assets/anh_bia.png";
+import {useLanguage} from "../context/LanguageContext";
 
 function Hero() {
+  const {t} = useLanguage();
   const [expanded, setExpanded] = useState(true);
   const [loaded, setLoaded] = useState(false);
 
@@ -81,7 +83,7 @@ function Hero() {
           },
         }}
       >
-        Discover Your Beauty
+        {t("Discover")}
       </Typography>
 
       {/* Subtitle */}
@@ -100,7 +102,7 @@ function Hero() {
           },
         }}
       >
-        Luxury cosmetics for every occasion
+        {t("Luxury")}
       </Typography>
 
       {/* Nội dung mở rộng */}
@@ -116,11 +118,7 @@ function Hero() {
           transition: "opacity 1s ease, transform 1s ease",
         }}
       >
-        Khám phá bộ sưu tập cao cấp của chúng tôi, nơi mỗi sản phẩm được
-        tạo ra nhằm tôn vinh vẻ đẹp tự nhiên của bạn. Với thiết kế tinh tế,
-        chất lượng vượt trội và phong cách đầy tính thẩm mỹ, chúng tôi mang
-        đến cho bạn trải nghiệm làm đẹp sang trọng, giúp bạn tự tin tỏa sáng
-        theo cách riêng của mình.
+        {t("sengen")}
       </Typography>
 
       {/* Nút chữ See More / See Less */}
@@ -155,7 +153,7 @@ function Hero() {
           },
         }}
       >
-        {expanded ? "Thu nhỏ" : "Xem thêm"}
+        {expanded ? t("ZoomOut") : t("ZoomIn")}
       </Typography>
     </Box>
   );

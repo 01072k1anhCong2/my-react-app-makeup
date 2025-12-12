@@ -2,38 +2,28 @@ import { AppBar, Toolbar, Typography, Button, Box, IconButton, Drawer, List, Lis
 import MenuIcon from "@mui/icons-material/Menu";
 import { useState,useEffect } from "react";
 import { Link } from "react-router-dom";
+import LanguageSwitcher from "./LanguageSwitcher";
+import {useLanguage} from "../context/LanguageContext";
+import { BorderLeft } from "@mui/icons-material";
+
+export const FontTitle = "'Cinzel', serif";
 
 function Header() {
-
+  const {t} = useLanguage();
+  
   const [mobileOpen, setMobileOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
-
-  useEffect(() => {
-    const handleScroll = () => {
-      if (window.scrollY > 50) {
-        setScrolled(true); // scroll xuống → background trắng
-      } else {
-        setScrolled(false); // scroll lên → background trong suốt
-      }
-    };
-
-    window.addEventListener("scroll", handleScroll);
-
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-    };
-  }, []);
   const navItems = [
-    { label: "Trang chủ", path: "/" },
-    { label: "Sản phẩm", path: "/products" },
-    { label: "Giới thiệu", path: "/about" },
-    { label: "Liên hệ", path: "/contact" },
+    { label: t("Home"), path: "/" },
+    { label: t("Products"), path: "/products" },
+    { label: t("About"), path: "/about" },
+    { label: t("Contact"), path: "/contact" },
   ];
-  const FontTitle = "'Cinzel', serif";
+
   const handleDrawerToggle = () => setMobileOpen(!mobileOpen);
 
   const drawer = (
-    <Box onClick={handleDrawerToggle} 
+    <Box 
     sx={{ 
       textAlign: "center",
       
@@ -52,7 +42,9 @@ function Header() {
       </Typography>
       <List>
         {navItems.map((item) => (
-          <ListItem sx={{
+          <ListItem
+          onClick={handleDrawerToggle}  
+          sx={{
             color:"white",
             "&:hover": {
                 color: "black !important",              
@@ -87,10 +79,31 @@ function Header() {
           />
           
           </ListItem>
-        ))}
+        ))
+        }
       </List>
+      <LanguageSwitcher scrolled={scrolled} sx={{
+        marginTop: 5,
+        borderLeft: 0,
+      }} />
     </Box>
   );
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY > 50) {
+        setScrolled(true); // scroll xuống → background trắng
+      } else {
+        setScrolled(false); // scroll lên → background trong suốt
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
 
   return (
     <>
@@ -103,6 +116,7 @@ function Header() {
         transition: "0.3s",
         "&:hover": {
         boxShadow: "0 4px 20px rgba(0,0,0,0.1)",
+        backgroundColor: "white",
         backdropFilter: "blur(10px)",
         color: "black ",
         "& *": {
@@ -154,6 +168,7 @@ function Header() {
                   fontWeight: "600",
                   minWidth: "unset",         
                   fontSize: { xs: "0.8rem", md: "1rem" },
+                  borderRadius: 0,
 
                   "&::after": {
                     content: '""',
@@ -172,7 +187,11 @@ function Header() {
               >
                 {item.label}
               </Button>
-            ))}
+            ))
+            }
+
+          <LanguageSwitcher scrolled={scrolled} />
+
           </Box>
           <IconButton color="inherit" edge="end"
            sx={{ 
@@ -181,7 +200,9 @@ function Header() {
             onClick={handleDrawerToggle}
           >
             <MenuIcon />
+
           </IconButton>
+
         </Toolbar>
       </AppBar>
 
@@ -192,8 +213,8 @@ function Header() {
         sx={{ display: { xs: "block", md: "none" }, }}
         PaperProps={{
             sx: {
-                backgroundColor: "rgba(255, 255, 255, 0.2)",  // trong suốt nhẹ
-                backdropFilter: "blur(10px)",                 // hiệu ứng mờ
+                backgroundColor: "rgba(255, 255, 255, 0.2)",  
+                backdropFilter: "blur(6px)",                 
                 boxShadow: "0 4px 20px rgba(0,0,0,0.2)", 
                                       
     }
