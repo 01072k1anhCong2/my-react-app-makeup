@@ -164,7 +164,7 @@ function Hero({onScrollNext}) {
         onClick={onScrollNext}
         sx={{
           position: "absolute",
-          bottom: {xs:220,md:30},
+          bottom: {xs:300,md:30},
           cursor: "pointer",
 
           opacity: showArrow ? 1 : 0,          

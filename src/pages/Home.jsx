@@ -21,6 +21,7 @@ import Hero from "../components/Hero";
 import {Box} from "@mui/material";
 import { useLocation } from "react-router-dom";
 import { useEffect } from "react";
+import HomeVideoSection from "../components/HomeVideoSection";
 
 const DataService = [
   {
@@ -128,6 +129,10 @@ export default function Home() {
         services={DataCourse}
       />
       </Box>
+
+      {/* Video Section */}
+      <HomeVideoSection />
+      
 
     </>
   );
