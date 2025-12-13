@@ -30,5 +30,7 @@ With a deep understanding of modern makeup trends, our team of specialists alway
   ContentItem_3:`The Nail services at Cart Makeup are designed to bring customers a refined and deeply relaxing beauty experience. We offer a full range of services such as gel polish, nail extensions, artistic nail designs, nail care, and damaged nail restoration.
 
 Our nail designs come in a wide variety of styles—from soft and elegant, youthful and cute, to luxurious and bold. With skilled technicians who have many years of experience, we pay meticulous attention to every detail, ensuring long-lasting, beautiful, and safe results for our customers.`,
+Services:"Services",
+Courses:"Courses",
 
 };

@@ -2,12 +2,13 @@ import { Box, Typography } from "@mui/material";
 import { useState,useEffect } from "react";
 import anhbia from "../assets/anh_bia.png";
 import {useLanguage} from "../context/LanguageContext";
+import KeyboardDoubleArrowDownIcon from '@mui/icons-material/KeyboardDoubleArrowDown';
 
-
-function Hero() {
+function Hero({onScrollNext}) {
   const {t} = useLanguage();
   const [expanded, setExpanded] = useState(true);
   const [loaded, setLoaded] = useState(false);
+  const [showArrow, setShowArrow] = useState(true);
 
   useEffect(() => {
     const timer = setTimeout(() => setLoaded(true), 100); 
@@ -18,9 +19,11 @@ function Hero() {
   useEffect(() => {
     const handleScroll = () => {
       if (window.scrollY > 50) { // scroll xuống hơn 50px → thu nhỏ
+        setShowArrow(false);
         setExpanded(false);
       } else {
         setExpanded(true); // scroll lên trên → mở lại
+        setShowArrow(true)
       }
     };
 
@@ -156,6 +159,40 @@ function Hero() {
       >
         {expanded ? t("ZoomOut") : t("ZoomIn")}
       </Typography>
+      
+      <Typography
+        onClick={onScrollNext}
+        sx={{
+          position: "absolute",
+          bottom: {xs:220,md:30},
+          cursor: "pointer",
+
+          opacity: showArrow ? 1 : 0,          
+          transform: showArrow
+            ? "translateY(0)"
+            : "translateY(20px)",              
+          transition: "all 0.8s ease",        
+
+          animation: showArrow
+            ? "bounce 1.8s infinite"
+            : "none",
+
+          "@keyframes bounce": {
+            "0%,100%": { transform: "translateY(0)" },
+            "50%": { transform: "translateY(10px)" },
+          },
+        }}
+      >
+        <KeyboardDoubleArrowDownIcon 
+        sx={{
+          fontSize:{      
+            xs: "34px",  
+            sm: "34px",
+            md: "42px",}
+        }}
+        />
+      </Typography>
+
     </Box>
   );
 }

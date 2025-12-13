@@ -2,18 +2,27 @@
 import { useEffect, useRef, useState } from "react";
 
 function Reveal({ children, className = "", ...props }) {
-  const ref = useRef();
+  const ref = useRef(null);
   const [show, setShow] = useState(false);
 
   useEffect(() => {
-    const obs = new IntersectionObserver(([entry]) => {
-      if (entry.isIntersecting) {
+    const obs = new IntersectionObserver(
+      ([entry]) => {
+        // vào viewport -> hiện
+        if (entry.isIntersecting) {
           setShow(true);
-          obs.unobserve(entry.target);
-      }
-    });
+        } 
+        // ra khỏi viewport -> ẩn lại
+        else {
+          setShow(false);
+        }
+      },
+      { threshold: 0.2 }
+    );
 
-    obs.observe(ref.current);
+    if (ref.current) obs.observe(ref.current);
+
+    return () => obs.disconnect();
   }, []);
 
   return (

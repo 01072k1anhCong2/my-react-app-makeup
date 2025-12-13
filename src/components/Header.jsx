@@ -4,17 +4,39 @@ import { useState,useEffect } from "react";
 import { Link } from "react-router-dom";
 import LanguageSwitcher from "./LanguageSwitcher";
 import {useLanguage} from "../context/LanguageContext";
-
+import { useNavigate, useLocation } from "react-router-dom";
 
 export const FontTitle = "'Cinzel', serif";
 
 function Header() {
+    // an vao scroll den muc do
+  const navigate = useNavigate();
+  const location = useLocation();
+  const handleNavClick = (item) => {
+      if (item.scrollTo) {
+        if (location.pathname !== "/") {
+          // Nếu không ở Home → navigate về Home trước, truyền state
+          navigate("/", { state: { scrollTo: item.scrollTo } });
+        } else {
+          // Nếu đang ở Home → scroll ngay
+          const el = document.getElementById(item.scrollTo);
+          el?.scrollIntoView({ behavior: "smooth" });
+        }
+      } else {
+        navigate(item.path);
+      }
+      setMobileOpen(false);
+    };
+
+
   const {t} = useLanguage();
   
   const [mobileOpen, setMobileOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const navItems = [
     { label: t("Home"), path: "/" },
+    { label: t("Services"), path: "/", scrollTo: "services" }, 
+    { label: t("Courses"), path: "/", scrollTo: "courses" }, 
     { label: t("Products"), path: "/products" },
     { label: t("About"), path: "/about" },
     { label: t("Contact"), path: "/contact" },
@@ -43,7 +65,10 @@ function Header() {
       <List>
         {navItems.map((item) => (
           <ListItem
-          onClick={handleDrawerToggle}  
+          onClick={() => {
+            handleDrawerToggle(); // đóng drawer
+            handleNavClick(item);  // xử lý điều hướng
+          }}
           sx={{
             color:"white",
             "&:hover": {
@@ -158,11 +183,12 @@ function Header() {
           <Box 
             sx={{ 
               display: { xs: "none", md: "flex" }, 
-              gap: 2 
+              gap: 3 
               }}
           >
             {navItems.map((item) => (
               <Button 
+                onClick={() => handleNavClick(item)}
                 disableRipple
                 key={item.label}
                 component={Link}

@@ -18,5 +18,13 @@ export default {
   aisatsuItem_2:"Dịch vụ Makeup Chuyên Nghiệp – Kiến tạo phong cách cho ngày đặc biệt",
   ContentItem_2:`Cart Makeup cung cấp dịch vụ trang điểm chuyên nghiệp dành cho các dịp quan trọng như cưới hỏi, sự kiện, kỷ yếu, chụp ảnh nghệ thuật và trang điểm cá nhân. Chúng tôi hiểu rằng makeup không chỉ là làm đẹp bên ngoài, mà còn là cách giúp bạn tỏa sáng, tự tin và thể hiện phong cách riêng. Bằng sự am hiểu về xu hướng makeup hiện đại, đội ngũ chuyên viên của chúng tôi luôn biết cách lựa chọn tone màu, phong cách và chất liệu phù hợp nhất với từng gương mặt, từng màu da và từng sở thích riêng.`,
   aisatsuItem_3:"Nail Art & Chăm Sóc Móng – Sáng tạo từ những điều nhỏ nhất",
-  ContentItem_3:`Dịch vụ Nail tại Cart Makeup được xây dựng với mong muốn mang đến cho khách hàng trải nghiệm làm đẹp tinh tế và thư giãn tuyệt đối. Chúng tôi cung cấp đầy đủ các dịch vụ như sơn gel, đắp móng, vẽ nail nghệ thuật, chăm sóc móng và phục hồi móng hư tổn. Các mẫu nail được thiết kế theo nhiều phong cách đa dạng: từ nhẹ nhàng – tinh tế, trẻ trung – dễ thương, đến sang trọng – cá tính. Đội ngũ kỹ thuật viên khéo léo, nhiều năm kinh nghiệm luôn tỉ mỉ trong từng đường nét, đảm bảo mang đến bộ móng bền đẹp và an toàn cho khách hàng.`,
+  ContentItem_3:`Dịch vụ Nail tại Cart Makeup được xây dựng 
+  với mong muốn mang đến cho khách hàng trải nghiệm làm đẹp tinh tế
+   và thư giãn tuyệt đối. Chúng tôi cung cấp đầy đủ các dịch vụ như sơn
+    gel, đắp móng, vẽ nail nghệ thuật, chăm sóc móng và phục hồi móng hư tổn.
+     Các mẫu nail được thiết kế theo nhiều phong cách đa dạng: từ nhẹ nhàng – tinh tế,
+      trẻ trung – dễ thương, đến sang trọng – cá tính. Đội ngũ kỹ thuật viên khéo léo, nhiều năm kinh 
+      nghiệm luôn tỉ mỉ trong từng đường nét, đảm bảo mang đến bộ móng bền đẹp và an toàn cho khách hàng.`,
+  Services:"Dịch vụ",
+  Courses:"Khóa học",
 };

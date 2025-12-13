@@ -1,7 +1,6 @@
-import { Container, Grid, Typography, Box, Paper, Button } from "@mui/material";
-import Hero from "../components/Hero";
+
+
 import ProductCard from "../components/ProductCard";
-import anhbia_1 from "../assets/anh_bia_1.png";
 import demo_1 from "../assets/demo_1.png";
 import demo_2 from "../assets/demo_2.png";
 import demo_3 from "../assets/demo_3.png";
@@ -17,6 +16,11 @@ import demo_12 from "../assets/demo_12.png";
 import BeautyInfoSection from "../components/BeautyInFoSection";
 import BeautyServiceSection from "../components/BeautyServiceSection";
 import CourseItem from "../components/CourseItem";
+import { useRef } from "react";
+import Hero from "../components/Hero";
+import {Box} from "@mui/material";
+import { useLocation } from "react-router-dom";
+import { useEffect } from "react";
 
 const DataService = [
   {
@@ -76,19 +80,55 @@ const DataCourse = [
 
 
 export default function Home() {
+  // an vao scroll den muc do
+  const location = useLocation();
+    useEffect(() => {
+    if (location.state?.scrollTo) {
+      const el = document.getElementById(location.state.scrollTo);
+      el?.scrollIntoView({ behavior: "smooth" });
+    }
+  }, [location]);
+  // an vao mui sen roll den phan tu dau tien
+  const nextSectionRef = useRef(null);
+
+  const scrollToNext = () => {
+    nextSectionRef.current?.scrollIntoView({
+      behavior: "smooth",
+    });
+  };
+
   return (
     <>
       {/* Hero Section */}
-      <Hero />
+      <Hero onScrollNext={scrollToNext}/>
+
+      <Box 
+        ref={nextSectionRef} 
+        sx={{
+        scrollMarginTop: { xs: "700px", md: "220px" }, // đúng chiều cao Header
+      }} >
       <BeautyInfoSection />
+      </Box>
+
+      <Box
+        id="services" 
+        sx={{ scrollMarginTop: { xs: "700px", md: "220px" } }}
+      >
       <BeautyServiceSection
         title="Dịch Vụ Tại Cart Makeup"
         services={DataService}
       />
+      </Box>
+      <Box
+        id="courses" 
+        sx={{ scrollMarginTop: { xs: "700px", md: "220px" } }}
+      >
       <CourseItem
         title="Khóa Học Makeup"
         services={DataCourse}
       />
+      </Box>
+
     </>
   );
 }

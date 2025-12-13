@@ -39,7 +39,7 @@ function BeautyInfoSection() {
       {/* Sub sections */}
 
 <Grid container spacing={2} sx={{ color:"black", }}>
-  <Reveal>
+
   <Grid 
     item xs={12} 
     sm={6} 
@@ -47,20 +47,26 @@ function BeautyInfoSection() {
     sx={{
     maxWidth:{xs:"100%",sm:"30%", md:"30%"}
   }}>
+
+    <Reveal>
     <Typography
       variant="h5"
       sx={{ fontWeight: 700, wordBreak: "break-word" }}
     >
       {t("aisatsuItem_1")}
     </Typography>
+    </Reveal>
 
+    <Reveal>
     <Typography sx={{ lineHeight: 1.6, wordBreak: "break-word", whiteSpace: "normal" }}>
       {t("ContentItem_1")}
     </Typography>
-  </Grid>
-  </Reveal>
+    </Reveal>
 
-  <Reveal>
+  </Grid>
+
+
+
   <Grid 
     item xs={12} 
     sm={6} 
@@ -68,20 +74,26 @@ function BeautyInfoSection() {
     sx={{
     maxWidth:{xs:"100%",sm:"30%", md:"30%"}
   }}>
+
+    <Reveal>
     <Typography
       variant="h5"
       sx={{ fontWeight: 700, wordBreak: "break-word" }}
     >
       {t("aisatsuItem_2")}
     </Typography>
+    </Reveal>
 
+    <Reveal>
     <Typography sx={{ lineHeight: 1.6, wordBreak: "break-word", whiteSpace: "normal" }}>
       {t("ContentItem_2")}
     </Typography>
-  </Grid>
-  </Reveal>
+    </Reveal>
 
-  <Reveal>
+  </Grid>
+
+
+
   <Grid 
     item xs={12} 
     sm={6} 
@@ -89,18 +101,23 @@ function BeautyInfoSection() {
     sx={{
     maxWidth:{xs:"100%",sm:"30%", md:"30%"}
   }}>
+    <Reveal>
     <Typography
       variant="h5"
       sx={{ fontWeight: 700, wordBreak: "break-word" }}
     >
       {t("aisatsuItem_3")}
     </Typography>
+    </Reveal>
 
+    <Reveal>
     <Typography sx={{ lineHeight: 1.6, wordBreak: "break-word", whiteSpace: "normal" }}>
       {t("ContentItem_3")}
     </Typography>
+    </Reveal>
+
   </Grid>
-  </Reveal>
+
 
 
 </Grid>
