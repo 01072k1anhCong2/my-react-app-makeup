@@ -2,6 +2,7 @@ import { Box, Typography, Grid } from "@mui/material";
 import Reveal from "../components/Reveal";
 
 function CourseItem({ title, services }) {
+
   return (
     <Box
       sx={{
@@ -25,7 +26,7 @@ function CourseItem({ title, services }) {
       </Typography>
       </Reveal>
       {/* Image Grid */}
-      <Reveal>
+      
       <Grid 
       container 
       spacing={3}
@@ -34,6 +35,8 @@ function CourseItem({ title, services }) {
       >
         {services.map((item, index) => (
           <Grid item xs={12} sm={6} md={4} key={index}>
+            
+            <Reveal>
             <Box
               sx={{
                 position: "relative",
@@ -97,10 +100,12 @@ function CourseItem({ title, services }) {
                 </Typography>
               </Box>
             </Box>
+            </Reveal>
+
           </Grid>
         ))}
       </Grid>
-      </Reveal>
+
     </Box>
   );
 }

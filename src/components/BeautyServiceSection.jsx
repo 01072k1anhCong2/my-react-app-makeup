@@ -32,7 +32,7 @@ import Reveal from "../components/Reveal";
       alignItems="flex-start"
       >
         {services.map((item, index) => (
-          <Grid item xs={12} sm={6} md={4} key={index}>
+          <Grid item xs={6} sm={6} md={4} key={index}>
             
             <Reveal>
             <Box
