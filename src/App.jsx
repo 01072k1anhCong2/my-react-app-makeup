@@ -7,6 +7,7 @@ import Home from "./pages/Home";
 import About from "./pages/About";
 import Contact from "./pages/Contact";
 import Products from "./pages/Products";
+import ScrollToTop from "./components/ScrollToTop";
 
 function App() {
 
@@ -26,7 +27,7 @@ function App() {
     {/* <BrowserRouter basename="/my-react-app-makeup"> */}
 
       <Header />
-
+      <ScrollToTop /> {/* de cuon len dau trang */}
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/products" element={<Products />} />
