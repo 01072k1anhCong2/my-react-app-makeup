@@ -38,7 +38,7 @@ function Header() {
     { label: t("Services"), path: "/", scrollTo: "services" }, 
     { label: t("Courses"), path: "/", scrollTo: "courses" }, 
     { label: t("Products"), path: "/products" },
-    { label: t("About"), path: "/about" },
+    // { label: t("About"), path: "/about" },
     { label: t("Contact"), path: "/contact" },
   ];
 

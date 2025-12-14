@@ -19,6 +19,11 @@ import Reveal from "../components/Reveal";
           textAlign: "center",
           mb: 4,
           color: "white",
+          fontSize: {
+            xs: "2.2rem", // mobile
+            sm: "2.5rem",   // tablet
+            md: "4rem", // desktop
+          },
         }}
       >
         {title}
@@ -32,7 +37,7 @@ import Reveal from "../components/Reveal";
       alignItems="flex-start"
       >
         {services.map((item, index) => (
-          <Grid item xs={6} sm={6} md={4} key={index}>
+          <Grid item xs={12} sm={6} md={4} key={index}>
             
             <Reveal>
             <Box
