@@ -1,6 +1,6 @@
 import ArrowUpwardIcon from "@mui/icons-material/ArrowUpward";
 import "./App.css";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import {  HashRouter, Routes, Route } from "react-router-dom";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 import Home from "./pages/Home";
@@ -22,7 +22,8 @@ function App() {
   };
 
   return (
-    <BrowserRouter basename="/my-react-app-makeup">
+    <HashRouter>
+    {/* <BrowserRouter basename="/my-react-app-makeup"> */}
 
       <Header />
 
@@ -40,7 +41,8 @@ function App() {
         <ArrowUpwardIcon />
       </div>
 
-    </BrowserRouter>
+    {/* </BrowserRouter> */}
+    </HashRouter>
   );
 }
 
