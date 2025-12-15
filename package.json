@@ -17,6 +17,8 @@
     "@formspree/react": "^3.0.0",
     "@mui/icons-material": "^7.3.6",
     "@mui/material": "^7.3.6",
+    "emailjs-com": "^3.2.0",
+    "firebase": "^9.23.0",
     "i18next": "^25.7.2",
     "lucide-react": "^0.561.0",
     "react": "^19.2.0",

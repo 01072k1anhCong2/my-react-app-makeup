@@ -12,3 +12,4 @@ yarn-error.log*
 # Editor files
 .vscode/
 .DS_Store
+.env

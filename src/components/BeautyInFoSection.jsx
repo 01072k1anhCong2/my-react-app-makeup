@@ -29,7 +29,7 @@ function BeautyInfoSection() {
           mb: 4,
           fontSize: { xs: "1.8rem", sm: "2.5rem", md: "3rem" },
           color: "black",
-          maxWidth: "70%",
+          maxWidth:{xs:'100%',md:'70%'},
         }}
       >
         {t("aisatsu")}
