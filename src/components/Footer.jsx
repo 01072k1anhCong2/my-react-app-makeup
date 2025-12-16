@@ -57,20 +57,27 @@ export default function Footer() {
         <Grid container spacing={{ xs: 4, sm: 5, md: 6 }}>
           {/* Logo and Tagline */}
 
+<Box sx={{ mb: { xs: 2, md: 3 }, textAlign: 'center' }}>
+  <a
+    href="https://01072k1anhcong2.github.io/admin-cartmakeup-ltc/"
+    target="_blank"
+    rel="noopener noreferrer"
+  >
+    <Box
+      component="img"
+      src={Logo}
+      alt="Cart Makeup Logo"
+      sx={{
+        width: { xs: 80, sm: 100, md: 120 },
+        mr: { md: 10 },
+        height: 'auto',
+        mb: 1,
+        cursor: 'pointer', // trỏ chuột như link
+      }}
+    />
+  </a>
+</Box>
 
-          <Box sx={{ mb: { xs: 2, md: 3 } }}>
-            <Box
-              component="img"
-              src={Logo}
-              alt="Cart Makeup Logo"
-              sx={{
-                width: { xs: 80, sm: 100, md: 120 },
-                mr:{md:10},
-                height: 'auto',
-                mb: 1,
-              }}
-            />
-          </Box>
 
 
 

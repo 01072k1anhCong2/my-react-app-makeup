@@ -35,7 +35,7 @@ function BeautyInfoSection() {
         {t("aisatsu")}
       </Typography>
       </Reveal>
-
+      
       {/* Sub sections */}
 
 <Grid container spacing={2} sx={{ color:"black", }}>
