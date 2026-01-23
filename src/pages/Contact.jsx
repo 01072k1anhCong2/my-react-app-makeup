@@ -3,6 +3,8 @@ import React, { useState } from "react";
 import { Box, TextField, Button, Typography, Paper } from "@mui/material";
 import { initializeApp } from "firebase/app";
 import { getFirestore, collection, addDoc, serverTimestamp } from "firebase/firestore";
+import Galaxy from '../components/Galaxy';
+
 
 // Firebase config từ env
 const firebaseConfig = {
@@ -19,6 +21,7 @@ const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
 
 export default function Contact() {
+  
   const [formData, setFormData] = useState({ name: "", email: "", message: "" });
   const [submitting, setSubmitting] = useState(false);
   const [succeeded, setSucceeded] = useState(false);
@@ -51,9 +54,9 @@ export default function Contact() {
 
     setSubmitting(false);
   };
-
   if (succeeded)
     return (
+      
       <Box
         sx={{
           minHeight: "100vh",
@@ -62,8 +65,27 @@ export default function Contact() {
           justifyContent: "center",
           px: 2,
           background: "linear-gradient(180deg,#0c0c0c,#000)",
+          position: "relative",//de co dinh background động
         }}
       >
+        {/* Background Galaxy động */}
+        <Box
+          sx={{
+            position: "absolute",
+            inset: 0,
+            zIndex: 0,
+          }}
+        >
+          <Galaxy
+            mouseInteraction
+            density={1}
+            glowIntensity={0.3}
+            saturation={0}
+            hueShift={140}
+            speed={0.6}
+          />
+        </Box>
+        
         <Paper
           sx={{
             p: 5,
@@ -83,6 +105,7 @@ export default function Contact() {
           </Typography>
         </Paper>
       </Box>
+      
     );
 
   return (
@@ -95,8 +118,27 @@ export default function Contact() {
         justifyContent: "center",
         px: { xs: 2, md: 4 },
         background: "linear-gradient(180deg,#0c0c0c,#000)",
+        position: "relative", //de co dinh background động
       }}
     >
+        {/* Background Galaxy động */}
+        <Box
+          sx={{
+            position: "absolute",
+            inset: 0,
+            zIndex: 0,
+          }}
+        >
+          <Galaxy
+            mouseInteraction
+            density={1}
+            glowIntensity={0.3}
+            saturation={0}
+            hueShift={140}
+            speed={0.6}
+          />
+        </Box>
+        
       <Paper
         elevation={0}
         sx={{
@@ -175,7 +217,9 @@ export default function Contact() {
         </Box>
       </Paper>
     </Box>
+    
   );
+  
 }
 
 const inputStyle = {
