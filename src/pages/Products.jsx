@@ -1,6 +1,6 @@
 import { Box, Typography, Grid } from "@mui/material";
 import ProductCard from "../components/ProductCard";
-
+import DomeGallery from '../components/DomGallery';
 function Products() {
   const products = [
     {
@@ -42,52 +42,16 @@ function Products() {
   ];
 
   return (
-    <Box
-      sx={{
-        minHeight: "100vh",
-        background: "linear-gradient(180deg, #0b0b0b, #000)",
-        px: { xs: 2, md: 6 },
-        py: { xs: 8, md: 12 },
-      }}
-    >
-      {/* Title */}
-      <Typography
-        sx={{
-          color: "#fff",
-          fontWeight: 700,
-          fontSize: { xs: "2.2rem", md: "3rem" },
-          textAlign: "center",
-          mb: 2,
-          letterSpacing: 1,
-        }}
-      >
-        Our Products
-      </Typography>
-
-      {/* Subtitle */}
-      <Typography
-        sx={{
-          color: "grey.400",
-          textAlign: "center",
-          maxWidth: "620px",
-          mx: "auto",
-          mb: 8,
-          fontSize: "1rem",
-        }}
-      >
-        Khám phá bộ sưu tập mỹ phẩm cao cấp được chọn lọc kỹ lưỡng,
-        mang đến vẻ đẹp tinh tế và chuyên nghiệp cho mọi phong cách trang điểm.
-      </Typography>
-
-      {/* Grid */}
-      <Grid container spacing={4}>
-        {products.map((item, index) => (
-          <Grid item xs={12} sm={6} md={4} key={index}>
-            <ProductCard {...item} />
-          </Grid>
-        ))}
-      </Grid>
-    </Box>
+  <div style={{ width: '100vw', height: '100vh' }}>
+  <DomeGallery
+  fit={0.8}
+  minRadius={600}
+  maxVerticalRotationDeg={0}
+  segments={34}
+  dragDampening={2}
+  grayscale
+/>
+    </div>
   );
 }
 

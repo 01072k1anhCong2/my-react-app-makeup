@@ -17,6 +17,7 @@
     "@formspree/react": "^3.0.0",
     "@mui/icons-material": "^7.3.6",
     "@mui/material": "^7.3.6",
+    "@use-gesture/react": "^10.3.1",
     "emailjs-com": "^3.2.0",
     "firebase": "^9.23.0",
     "i18next": "^25.7.2",
