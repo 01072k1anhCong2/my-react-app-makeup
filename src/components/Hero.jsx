@@ -159,7 +159,7 @@ function Hero({onScrollNext}) {
       >
         {expanded ? t("ZoomOut") : t("ZoomIn")}
       </Typography>
-      
+      {/* mũi tên đi xuống và đi lên */}
       <Typography
         onClick={onScrollNext}
         sx={{

@@ -106,8 +106,9 @@ export default function Home() {
       <Box 
         ref={nextSectionRef} 
         sx={{
-        scrollMarginTop: { xs: "700px", md: "220px" }, // đúng chiều cao Header
-      }} >
+              scrollMarginTop: { xs: "700px", md: "220px" }, // đúng chiều cao Header
+            }} 
+      >
       <BeautyInfoSection />
       </Box>
 
